@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>経歴 | 豊﨑光庸 公式ページ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #800020;
+    --navy: #4a0e1c;
+    --accent: #e1ad01;
+    --paper: #faf8f3;
+    --ink: #1d1d1d;
+    --muted: #666;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Noto Sans JP", sans-serif;
+    color: var(--ink);
+    background: var(--paper);
+    line-height: 1.9;
+  }
+  h1, h2, h3 { font-family: "Noto Serif JP", serif; }
+
+  /* ナビ */
+  nav {
+    position: sticky; top: 0; z-index: 10;
+    background: var(--navy);
+    display: flex; justify-content: space-between; align-items: center;
+    padding: .8rem 2rem;
+  }
+  nav .logo { color: #fff; font-family: "Noto Serif JP", serif; font-weight: 700; letter-spacing: .1em; text-decoration: none; }
+  nav ul { list-style: none; display: flex; gap: 1.5rem; }
+  nav a { color: #fff; text-decoration: none; font-size: .9rem; opacity: .85; }
+  nav a:hover, nav a.current { opacity: 1; color: var(--accent); }
+  .nav-right { display: flex; align-items: center; gap: 1.5rem; }
+  nav .insta { display: flex; opacity: 1; }
+
+  /* ページ見出し */
+  .page-head {
+    color: #fff; text-align: center;
+    padding: 6rem 1rem 5rem;
+    background:
+      linear-gradient(rgba(74,14,28,.82), rgba(74,14,28,.82)),
+      url("hero.jpg") 30% 70% / cover no-repeat;
+    border-bottom: 6px solid var(--accent);
+  }
+  .page-head .en { color: var(--accent); letter-spacing: .4em; font-size: .85rem; }
+  .page-head h1 { font-size: clamp(2.4rem, 7vw, 4rem); font-weight: 900; letter-spacing: .3em; margin-top: .5rem; }
+  .page-head p { margin-top: 1rem; opacity: .9; }
+
+  /* 年表 */
+  .timeline { max-width: 820px; margin: 0 auto; padding: 5rem 1.5rem; position: relative; }
+  .timeline::before {
+    content: ""; position: absolute; top: 5rem; bottom: 5rem; left: calc(1.5rem + 7.5rem);
+    width: 3px; background: linear-gradient(var(--red), var(--accent));
+  }
+  .item { display: grid; grid-template-columns: 7.5rem 1fr; position: relative; margin-bottom: 2.8rem; }
+  .item:last-child { margin-bottom: 0; }
+  .item .when {
+    font-family: "Noto Serif JP", serif; font-weight: 700; color: var(--red);
+    padding-right: 1.5rem; text-align: right; padding-top: .9rem; font-size: .95rem;
+  }
+  .item .body {
+    margin-left: 1.8rem; background: #fff; padding: 1.2rem 1.5rem;
+    border-left: 4px solid var(--red); box-shadow: 0 2px 8px rgba(0,0,0,.05);
+  }
+  .item::before {
+    content: ""; position: absolute; left: calc(7.5rem - 7px); top: 1.2rem;
+    width: 17px; height: 17px; border-radius: 50%;
+    background: var(--paper); border: 4px solid var(--red);
+  }
+  .item h3 { font-size: 1.15rem; }
+  .item p { font-size: .92rem; color: #444; margin-top: .3rem; }
+
+  /* 転機 */
+  .item.hardship .body { border-left-color: #555; background: #f1efea; }
+  .item.hardship::before { border-color: #555; }
+
+  /* 重要な出来事 */
+  .item.major .body { background: var(--navy); color: #fff; border-left-color: var(--accent); }
+  .item.major .body p { color: rgba(255,255,255,.85); }
+  .item.major::before { background: var(--accent); border-color: var(--accent); }
+  .badge {
+    display: inline-block; font-size: .72rem; letter-spacing: .15em;
+    background: var(--accent); color: var(--navy); font-weight: 700;
+    padding: .05rem .6rem; margin-bottom: .4rem;
+  }
+
+  /* トヨノミクス */
+  .toyonomics {
+    scroll-margin-top: 80px; /* 固定メニューに隠れないように */
+    max-width: 820px; margin: 0 auto 6rem; padding: 0 1.5rem;
+  }
+  /* 結び */
+  .closing {
+    color: #fff; text-align: center;
+    padding: 7rem 1.5rem;
+    background:
+      linear-gradient(rgba(30,4,10,.78), rgba(74,14,28,.9)),
+      url("hero.jpg") 60% 50% / cover no-repeat;
+    border-top: 6px solid var(--accent);
+  }
+  .closing p { font-family: "Noto Serif JP", serif; }
+  .closing .lead { font-size: clamp(1rem, 2.6vw, 1.25rem); line-height: 2.4; opacity: .85; letter-spacing: .1em; }
+  .closing .final {
+    font-size: clamp(1.7rem, 5vw, 3rem); font-weight: 900; line-height: 1.6;
+    letter-spacing: .12em; margin-top: 3rem;
+    text-shadow: 0 2px 16px rgba(0,0,0,.6);
+  }
+  .closing .sign { color: var(--accent); font-weight: 700; letter-spacing: .3em; margin-top: 2.5rem; font-size: 1.1rem; }
+
+  .toyonomics .box {
+    border: 3px double var(--red); background: #fff;
+    text-align: center; padding: 3rem 2rem;
+  }
+  .toyonomics .label { color: var(--red); letter-spacing: .3em; font-size: .85rem; font-weight: 700; }
+  .toyonomics h2 {
+    font-size: clamp(2.2rem, 6vw, 3.4rem); font-weight: 900; color: var(--red);
+    letter-spacing: .15em; margin: .4rem 0 1rem;
+  }
+  .toyonomics p { color: #444; }
+  .arrows { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2.2rem; }
+  .arrow {
+    background: var(--navy); color: #fff; padding: 1.6rem 1rem 1.3rem;
+    border-top: 4px solid var(--accent); position: relative;
+  }
+  .arrow::before {
+    content: "➶"; display: block; color: var(--accent); font-size: 1.8rem; line-height: 1; margin-bottom: .5rem;
+  }
+  .arrow .num { color: var(--accent); font-size: .8rem; letter-spacing: .25em; font-weight: 700; }
+  .arrow h3 { font-size: 1.3rem; margin-top: .2rem; letter-spacing: .08em; }
+  @media (max-width: 700px) { .arrows { grid-template-columns: 1fr; } }
+
+  footer { background: var(--ink); color: #bbb; text-align: center; padding: 2.5rem 1rem; font-size: .85rem; }
+  footer .name { color: #fff; font-family: "Noto Serif JP", serif; font-size: 1.2rem; margin-bottom: .5rem; }
+
+  /* スマホ用メニューボタン */
+  .menu-btn {
+    display: none; background: none; border: 0; cursor: pointer;
+    width: 40px; height: 40px; position: relative;
+  }
+  .menu-btn span, .menu-btn::before, .menu-btn::after {
+    content: ""; position: absolute; left: 8px; width: 24px; height: 2px;
+    background: #fff; transition: .25s;
+  }
+  .menu-btn::before { top: 12px; }
+  .menu-btn span { top: 19px; }
+  .menu-btn::after { top: 26px; }
+  nav.open .menu-btn::before { top: 19px; transform: rotate(45deg); }
+  nav.open .menu-btn span { opacity: 0; }
+  nav.open .menu-btn::after { top: 19px; transform: rotate(-45deg); }
+
+  @media (max-width: 700px) {
+    .menu-btn { display: block; }
+    nav ul {
+      display: none; position: absolute; top: 100%; left: 0; right: 0;
+      flex-direction: column; gap: 0;
+      background: var(--navy); border-top: 1px solid rgba(255,255,255,.15);
+      border-bottom: 4px solid var(--accent);
+    }
+    nav.open ul { display: flex; }
+    nav ul a { display: block; padding: 1rem 2rem; font-size: 1rem; border-bottom: 1px solid rgba(255,255,255,.1); }
+    .timeline::before { left: calc(1.5rem + 5rem); }
+    .item { grid-template-columns: 5rem 1fr; }
+    .item::before { left: calc(5rem - 7px); }
+    .item .when { font-size: .8rem; padding-right: 1rem; }
+    .item .body { margin-left: 1.2rem; padding: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="index.html">豊﨑光庸</a>
+  <div class="nav-right">
+    <ul>
+      <li><a href="index.html#profile">プロフィール</a></li>
+      <li><a href="keireki.html" class="current">経歴</a></li>
+      <li><a href="#toyonomics">公約</a></li>
+      <li><a href="index.html#festival">第30回大学祭</a></li>
+      <li><a href="index.html#party">中実保守党</a></li>
+    </ul>
+    <a class="insta" href="https://www.instagram.com/kooot.06/" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+    </a>
+    <button class="menu-btn" aria-label="メニュー" aria-expanded="false"><span></span></button>
+  </div>
+</nav>
+<script>
+  // スマホ用メニューの開閉
+  const nav = document.querySelector("nav");
+  const btn = nav.querySelector(".menu-btn");
+  btn.addEventListener("click", () => {
+    const open = nav.classList.toggle("open");
+    btn.setAttribute("aria-expanded", open);
+  });
+  nav.querySelectorAll("ul a").forEach(a => a.addEventListener("click", () => {
+    nav.classList.remove("open");
+    btn.setAttribute("aria-expanded", false);
+  }));
+</script>
+
+<header class="page-head">
+  <div class="en">CAREER</div>
+  <h1>経歴</h1>
+  <p>生徒会長から、中実保守党党首・内閣総理大臣へ。</p>
+</header>
+
+<div class="timeline">
+
+  <div class="item">
+    <div class="when">小学校時代</div>
+    <div class="body">
+      <h3>極真空手を習う</h3>
+      <p>極真空手で心身を鍛える。不屈の精神の原点。</p>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="when">中学時代</div>
+    <div class="body">
+      <h3>中学校にて生徒会長を務める</h3>
+      <p>福岡県で育つ。中学で初めて生徒会長に就き、仲間を率いる。</p>
+    </div>
+  </div>
+
+  <div class="item hardship">
+    <div class="when">中学時代</div>
+    <div class="body">
+      <h3>家を失う</h3>
+      <p>生徒会長を務めたのち、自宅を失う。大きな試練を乗り越える。</p>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="when">高校時代</div>
+    <div class="body">
+      <h3>福岡県立須恵高等学校にて生徒会長を務める</h3>
+      <p>福岡県立須恵高等学校で、再び生徒会長として学校を率いる。</p>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="when">大学入学</div>
+    <div class="body">
+      <h3>佐賀大学 経済学部 経営学科に入学</h3>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="when">第29回</div>
+    <div class="body">
+      <h3>大学祭中央実行委員会 副委員長</h3>
+      <p>第29回佐賀大学大学祭中央実行委員会にて副委員長を務める。</p>
+    </div>
+  </div>
+
+  <div class="item major">
+    <div class="when">第30回</div>
+    <div class="body">
+      <div class="badge">就任</div>
+      <h3>大学祭中央実行委員会 委員長</h3>
+      <p>第30回佐賀大学大学祭中央実行委員会にて委員長に就任。節目の第30回を率いる。</p>
+    </div>
+  </div>
+
+  <div class="item major">
+    <div class="when">発足</div>
+    <div class="body">
+      <div class="badge">発足</div>
+      <h3>中実保守党 発足 ／ 豊﨑光庸内閣 発足</h3>
+      <p>中実保守党を立ち上げ、党首に。同時に豊﨑光庸内閣が発足する。</p>
+    </div>
+  </div>
+
+  <div class="item major">
+    <div class="when">公約</div>
+    <div class="body">
+      <div class="badge">公約</div>
+      <h3>「トヨノミクス」を掲げる</h3>
+      <p>中実保守党の看板政策として、トヨノミクスを公約に掲げる。</p>
+    </div>
+  </div>
+
+</div>
+
+<section class="toyonomics" id="toyonomics">
+  <div class="box">
+    <div class="label">豊﨑光庸内閣 公約</div>
+    <h2>トヨノミクス</h2>
+    <p>中実保守党が掲げる、豊﨑光庸内閣の看板政策。</p>
+    <div class="arrows">
+      <div class="arrow">
+        <div class="num">第一の矢</div>
+        <h3>フォロワー<br>倍増計画</h3>
+      </div>
+      <div class="arrow">
+        <div class="num">第二の矢</div>
+        <h3>実行委員<br>働き方改革</h3>
+      </div>
+      <div class="arrow">
+        <div class="num">第三の矢</div>
+        <h3>天皇制構想</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="closing">
+  <p class="lead">極真の道場で拳を鍛え、<br>家を失っても膝をつかず、<br>二度、生徒会長として皆の先頭に立った。</p>
+  <p class="final">立ちはだかるすべてを薙ぎ払い、<br>豊﨑光庸は、ここまで来た。</p>
+  <p class="sign">そして今、第30回の頂へ。</p>
+</section>
+
+<footer>
+  <div class="name">豊﨑光庸</div>
+  <p>佐賀大学大学祭中央実行委員会 委員長 / 佐賀大学 経済学部 経営学科</p>
+  <p style="margin-top:1rem">&copy; 2026 豊﨑光庸</p>
+</footer>
+
+</body>
+</html>
